@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Moirai+One&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Moirai+One&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap");
+
+      body {
+        background-color: rgb(31, 31, 55);
+        font-family: "Gaegu", cursive;
+      }
+
+      #bodyy {
+        margin: 30px;
+      }
+      h1 {
+        color: rgb(216, 216, 216);
+        font-size: 80px;
+        letter-spacing: 5px;
+
+        margin: 20px;
+        display: inline-block;
+      }
+
+      #titleLine {
+        display: inline-block;
+
+        background-color: rgb(216, 216, 216);
+        width: 4px;
+        height: 45px;
+
+        border-radius: 10px;
+
+        margin: 0 0 0 10px;
+      }
+
+      input {
+        width: 200px; /*540*/
+        height: 20px;
+
+        border: none;
+        border-radius: 3px;
+        /* background-color: rgb(38, 38, 57); */
+
+        /* box-shadow: 1px 1px 5px 3px rgb(38, 38, 57); */
+        background-color: rgba(128, 128, 128, 0.42);
+      }
+
+      button {
+        height: 25px;
+        background-color: gainsboro;
+        border: 1px solid gray;
+        border-radius: 5px;
+      }
+
+      #allDel {
+        display: inline-block;
+      }
+
+      #inputbox {
+        width: 270px;
+        height: 30px;
+
+        display: inline-block;
+
+        padding: 3px;
+        margin: 0 0 0 70px;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        border-radius: 5px;
+
+        background-color: gainsboro;
+
+        box-shadow: 0 0 10px 5px rgb(10, 10, 19);
+        /* rgb(27, 27, 40) */
+      }
+
+      #inputTextbox {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      #allDel {
+        display: flex;
+        justify-content: flex-end;
+        margin: 5px 0 0 0;
+      }
+
+      /* #title {
+        background-color: rgb(56, 56, 79);
+        width: 320px;
+
+        text-align: center;
+        margin: ;
+
+        border-radius: 10px;
+      } */
+
+      #contentbox {
+        background-color: rgba(10, 10, 19, 0.388);
+
+        height: 700px;
+      }
+
+      #todo-item {
+        width: 100px;
+        background-color: aquamarine;
+      }
+
+      .todo-item {
+        font-family: "Hi Melody", cursive;
+        font-size: 70px;
+        font-weight: 400;
+        text-align: center;
+
+        height: 80px;
+        background-color: crimson;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bodyy">
+      <div id="title">
+        <h1>TODO LIST</h1>
+        <div id="titleLine"></div>
+      </div>
+
+      <div id="inputTextbox">
+        <div id="inputbox">
+          <input type="text" id="todoInput" />
+          <button id="add" onclick="addTodo()">추가</button>
+        </div>
+        <button id="allDel">모두 삭제</button>
+      </div>
+
+      <ul id="todo-List"></ul>
+
+      <!-- <div id="contentbox"></div> -->
+    </div>
+
+    <div id="todo-item">sldfjsdklj</div>
+
+    <script>
+      function addTodo() {
+        const todoInput = document.getElementById("todoInput");
+        const todoText = todoInput.value.trim();
+
+        const todoList = document.getElementById("todo-List");
+        const listItem = document.createElement("li");
+        listItem.className = "todo-item";
+        listItem.innerHTML = `
+            <span>${todoText}</span>
+            <button onclik="removetodo(this)">완료</button>
+        `;
+
+        todoList.appendChild(listItem);
+      }
+    </script>
+  </body>
+</html>

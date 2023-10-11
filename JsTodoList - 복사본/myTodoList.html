@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @font-face {
+        font-family: "Cafe24Supermagic-Bold-v1.0";
+        src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2")
+          format("woff2");
+        font-weight: 700;
+        font-style: normal;
+      }
+      body {
+        background-color: darkcyan;
+
+        display: flex;
+        justify-content: center;
+
+        position: relative;
+      }
+      #background {
+        background-color: white;
+        display: inline-block;
+
+        width: 400px;
+        height: 350px;
+
+        border-radius: 5px;
+
+        position: absolute;
+        top: 50%;
+        transform: translate(0, 30%);
+      }
+      #title {
+        font-family: "Cafe24Supermagic-Bold-v1.0";
+
+        font-size: 50px;
+        padding: 0 0 0 25%;
+        margin: 20px 0 0 0;
+      }
+
+      #hr {
+        background-color: black;
+
+        width: 300px;
+        height: 5px;
+        border: 0;
+      }
+      #searchbox {
+        border: 1px solid gray;
+        border-radius: 3px;
+
+        width: 280px;
+        height: 25px;
+        margin: 10px 0 0 15%;
+
+        position: relative;
+      }
+
+      #search {
+        width: 200px;
+        height: 20px;
+
+        margin: 10px 0 0 15%;
+
+        border: 0;
+
+        position: absolute;
+        left: -15px;
+        top: -8px;
+
+        outline: none;
+      }
+
+      #searchbox button {
+        position: absolute;
+        right: 15px;
+        top: 4px;
+
+        border: none;
+      }
+
+      #content {
+        display: flex;
+        justify-content: center;
+
+        /* height: 209px; */
+        height: 170px;
+        overflow: auto;
+
+        width: 350px;
+
+        margin: 10px 0 0 0;
+      }
+
+      #content::-webkit-scrollbar {
+        width: 5px; /* 스크롤바의 너비 */
+      }
+
+      #content::-webkit-scrollbar-thumb {
+        height: 5%; /* 스크롤바의 길이 */
+        background: darkcyan; /* 스크롤바의 색상 */
+
+        border-radius: 10px;
+      }
+
+      #content::-webkit-scrollbar-track {
+        background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
+      }
+
+      #todo-list {
+        width: 300px;
+      }
+      .todo-item {
+        font-family: "Cafe24Supermagic-Bold-v1.0";
+        margin: 10px 0 0 60px;
+
+        background-color: whitesmoke;
+        width: 240px;
+        height: 35px;
+
+        list-style: none;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        position: relative;
+      }
+      .check {
+        height: 15px;
+        width: 15px;
+        margin: 0 0 0 10px;
+      }
+
+      .Item2 {
+        right: 10px;
+
+        width: 5px;
+        height: 13px;
+
+        border: 1px solid gray;
+
+        margin: 0 10px 0 0;
+
+        background-color: crimson;
+      }
+
+      .Item1 {
+        background-color: whitesmoke;
+        border: none;
+      }
+
+      #classification {
+        /* background-color: yellow; */
+
+        height: 25px;
+
+        padding: 7px 0;
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      #sdf {
+        background-color: none;
+        width: 250px;
+        height: 175px;
+
+        position: relative;
+        bottom: 212px;
+        /* left: -400px; */
+        border-radius: 0 20px 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="background">
+      <div id="header">
+        <div id="title">To do List</div>
+        <hr id="hr" />
+        <div id="searchbox">
+          <input
+            id="search"
+            type="text"
+            autofocus
+            placeholder="What do you have to do today?"
+            maxlength="16"
+          />
+          <button onclick="addTodo()">add</button>
+        </div>
+      </div>
+
+      <div id="content">
+        <div id="todo-list"></div>
+      </div>
+
+      <div id="classification">
+        <button>solve</button>
+        <button>I will not</button>
+      </div>
+
+      <div id="sdf"></div>
+      <button></button>
+    </div>
+
+    <script>
+      function addTodo() {
+        let cnt = 0;
+        const todoInput = document.getElementById("search");
+        const todoText = todoInput.value.trim();
+        if (todoText === "") return;
+
+        const todoList = document.getElementById("todo-list");
+        const todoItem = document.createElement("li");
+        todoItem.className = "todo-item";
+        todoItem.innerHTML = `
+            <button class="check"></button>
+            <div>${todoText}</div>
+            <button onclick="removeTodo(this)" class="Item2"></button>
+        `;
+
+        todoList.appendChild(todoItem);
+        todoInput.value = "";
+      }
+
+      function removeTodo(button) {
+        const todoList = document.getElementById("todo-list");
+        const todoItem = button.parentElement;
+        todoList.removeChild(todoItem);
+      }
+
+      const emojis = ["☑️", "✅"];
+      let emojiscnt = 0;
+
+      function changeEmoji(button) {
+        const check = document.getElementById("Item1");
+        check.textContent = emojis[emojiscnt];
+
+        emojiscnt = (emojiscnt + 1) % emojis.length;
+      }
+
+      function removeAnima(button) {
+        const remoTodo = document.getElementById("todo-item");
+      }
+    </script>
+  </body>
+</html>

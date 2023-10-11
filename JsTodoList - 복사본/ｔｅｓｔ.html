@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="but">바뀌기 전</button>
+
+    <script>
+      const mod = document.getElementById("but");
+      mod.addEventListener("click", function () {
+        if (mod.innerText === "바뀌기 전") {
+          mod.innerText = "바뀐 후";
+        } else {
+          mod.innerText = "바뀌기 전";
+        }
+      });
+    </script>
+  </body>
+</html>
