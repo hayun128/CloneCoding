@@ -157,12 +157,13 @@ body::-webkit-scrollbar-thumb {
 
   height: 100px;
 }
+
 #category > :first-child {
   background-color: black;
   color: white;
 }
 
-button {
+#category > button {
   border: none;
   border-radius: 9px;
 
@@ -170,6 +171,12 @@ button {
   color: #424242;
   text-align: center;
   padding: 7px 13px 13px 13px;
+
+  background-color: whitesmoke;
+}
+
+#category > button:hover {
+  background-color: rgb(231, 231, 231);
 }
 
 #videoContainer {
