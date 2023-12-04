@@ -47,6 +47,8 @@ body::-webkit-scrollbar-thumb {
   gap: 5px;
 
   border-radius: 10px;
+
+  cursor: pointer;
 }
 .iconContainer:hover {
   background-color: whitesmoke;
@@ -78,11 +80,13 @@ body::-webkit-scrollbar-thumb {
 #lineThree {
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 
 #youLogo {
   width: 150px;
   height: 60px;
+  cursor: pointer;
 }
 
 #upHed2 {
@@ -108,6 +112,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 0 40px 40px 0;
 
   width: 70px;
+  cursor: pointer;
 
   /* 이거 인풋이랑 버튼 사이에 선 어캐그음????? */
 }
@@ -129,6 +134,8 @@ body::-webkit-scrollbar-thumb {
   align-items: center;
 
   border-radius: 50%;
+
+  cursor: pointer;
 }
 #upHed3 > button {
   padding: 5px 20px;
@@ -141,6 +148,8 @@ body::-webkit-scrollbar-thumb {
   color: #4167ff;
 
   background-color: white;
+
+  cursor: pointer;
 }
 
 #inContent {
@@ -156,6 +165,12 @@ body::-webkit-scrollbar-thumb {
   gap: 15px;
 
   height: 100px;
+
+  overflow: auto;
+  white-space: nowrap;
+}
+#category::-webkit-scrollbar {
+  display: none;
 }
 
 #category > :first-child {
@@ -173,9 +188,11 @@ body::-webkit-scrollbar-thumb {
   padding: 7px 13px 13px 13px;
 
   background-color: whitesmoke;
+
+  cursor: pointer;
 }
 
-#category > button:hover {
+#category > :not(:first-of-type):hover {
   background-color: rgb(231, 231, 231);
 }
 
@@ -191,9 +208,9 @@ body::-webkit-scrollbar-thumb {
   flex-direction: column;
   gap: 10px;
 
-  width: 470px;
-
   height: 400px;
+
+  cursor: pointer;
 }
 .videoexplan {
   display: flex;
@@ -204,6 +221,9 @@ body::-webkit-scrollbar-thumb {
   width: 450px;
   height: 250px;
   border-radius: 15px;
+}
+.videoImg:hover {
+  border-radius: 0px;
 }
 
 .proImg {
