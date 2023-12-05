@@ -224,6 +224,7 @@ body::-webkit-scrollbar-thumb {
 }
 .videoImg:hover {
   border-radius: 0px;
+  transition-duration: 200ms;
 }
 
 .proImg {
