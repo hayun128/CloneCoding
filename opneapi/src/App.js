@@ -45,35 +45,46 @@ function App() {
 
   return (
     <Body>
-      <select
-        name="sourceLanguges"
-        id=""
-        onChange={sLSelect}
-        value={sourceLanguges}
-      >
-        <option value="ko">한국어</option>
-        <option value="en">영어</option>
-        <option value="es">스페인어</option>
-        <option value="ja">일본어</option>
-      </select>
+      <Content>
+        <Con>
+          <Selc>
+            <Select
+              name="sourceLanguges"
+              id=""
+              onChange={sLSelect}
+              value={sourceLanguges}
+            >
+              <option value="ko">한국어</option>
+              <option value="en">영어</option>
+              <option value="es">스페인어</option>
+              <option value="ja">일본어</option>
+            </Select>
 
-      <Con>
-        <Input value={upload} onChange={(e) => setUpload(e.target.value)} />
-        <But onClick={translate}>»</But>
-        <Input />
-      </Con>
+            <But onClick={translate}>»</But>
 
-      <select
-        name="targetLanguges"
-        id=""
-        onChange={tLSelect}
-        value={targetLanguges}
-      >
-        <option value="ko">한국어</option>
-        <option value="en">영어</option>
-        <option value="es">스페인어</option>
-        <option value="ja">일본어</option>
-      </select>
+            <Select
+              name="targetLanguges"
+              id=""
+              onChange={tLSelect}
+              value={targetLanguges}
+            >
+              <option value="ko">한국어</option>
+              <option value="en">영어</option>
+              <option value="es">스페인어</option>
+              <option value="ja">일본어</option>
+            </Select>
+          </Selc>
+          <Input
+            value={upload}
+            onChange={(e) => setUpload(e.target.value)}
+            placeholder="번역할 거"
+          />
+        </Con>
+
+        <Con>
+          <Input className="tarInput" placeholder="번역된 거" />
+        </Con>
+      </Content>
     </Body>
   );
 }
@@ -82,40 +93,88 @@ export default App;
 
 const Body = styled.div`
   height: 100vh;
+
   display: flex;
+  justify-content: center;
+  align-items: center;
 
   padding: 20px 0;
 
-  flex-direction: column;
+  /* gap: 5vh; */
+`;
 
-  gap: 5vh;
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+`;
+
+const Selc = styled.div`
+  width: 100%;
+
+  padding: 5px 0 5px 0;
+
+  display: flex;
+  justify-content: center;
+  gap: 5vw;
+`;
+
+const Select = styled.select`
+  width: 20%;
+
+  font-family: "omyu_pretty";
+  font-size: 2rem;
+
+  border: none;
+
+  &:focus {
+    outline: 1px dashed lightgrey;
+  }
 `;
 
 const Con = styled.div`
-  display: flex;
-  justify-content: space-around;
-  gap: 15px;
-`;
+  width: 35vw;
+  height: 35vh;
 
-const Aro = styled.div`
-  margin: 2vh 0;
-  font-size: 30px;
+  border: 1px solid lightgrey;
+
+  display: flex;
+  flex-direction: column;
 `;
 
 const Input = styled.input`
-  width: 30vw;
-  height: 10vh;
+  height: 100%;
+  padding: 3px 20px;
 
-  padding: 0 20px;
+  font-size: 5vmin;
+  font-family: "omyu_pretty";
 
-  border: 1px solid grey;
-  border-radius: 5px;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  border-color: lightgrey;
+  border-radius: 5px 5px 0 0;
+
+  &.tarInput {
+    background-color: whitesmoke;
+    border: none;
+    &:focus {
+      border-radius: 0;
+    }
+  }
+
+  &::placeholder {
+    color: lightgrey;
+  }
+
+  &:focus {
+    outline: 1px solid grey;
+  }
 `;
 
 const But = styled.button`
-  font-size: 30px;
+  background-color: green;
 
-  margin: 0 5vh;
+  font-size: 30px;
 
   border: none;
   background-color: white;
