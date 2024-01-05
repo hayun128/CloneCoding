@@ -28,6 +28,8 @@ function App() {
       const result = await axios.get(`${URL}/translate`, {
         params: {
           text: upload,
+          source: sourceLanguges,
+          target: targetLanguges,
         },
       });
       console.log(result);
