@@ -5,15 +5,19 @@ import axios from "axios";
 
 function App() {
   const [upload, setUpload] = useState();
+  const [tarns, setTarns] = useState();
+
   console.log(upload);
 
   const [sourceLanguges, setSourceLanguges] = useState("ko");
   const [targetLanguges, setTargetLanguges] = useState("en");
 
+  const URL = process.env.REACT_APP_BASEURL;
+  console.log(URL);
+
   const sLSelect = (e) => {
     setSourceLanguges(e.target.value);
   };
-
   const tLSelect = (e) => {
     setTargetLanguges(e.target.value);
   };
@@ -21,23 +25,13 @@ function App() {
 
   const translate = async () => {
     try {
-      const result = await axios.post(
-        "https://openapi.naver.com/v1/papago/n2mt",
-        {
-          params: {
-            soure: "ko",
-            target: "en",
-            text: upload,
-          },
-          headers: {
-            Accept: "*/*",
-            "X-Naver-Client-Id": "EP_CRcoF6vB_CIB4Fr0v",
-            "X-Naver-Client-Secret": "_DrKdl5pL9",
-            "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-          },
-        }
-      );
+      const result = await axios.get(`${URL}/translate`, {
+        params: {
+          text: upload,
+        },
+      });
       console.log(result);
+      setTarns(result.data.message.result.translatedText);
     } catch (error) {
       console.log(error);
     }
@@ -82,7 +76,7 @@ function App() {
         </Con>
 
         <Con>
-          <Input className="tarInput" placeholder="번역된 거" />
+          <Input className="tarInput" placeholder="번역된 거" value={tarns} />
         </Con>
       </Content>
     </Body>
@@ -104,6 +98,7 @@ const Body = styled.div`
 `;
 
 const Content = styled.div`
+  width: 70%;
   display: flex;
   flex-direction: column;
   gap: 2vh;
@@ -133,7 +128,7 @@ const Select = styled.select`
 `;
 
 const Con = styled.div`
-  width: 35vw;
+  width: 100%;
   height: 35vh;
 
   border: 1px solid lightgrey;
