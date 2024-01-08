@@ -7,13 +7,10 @@ function App() {
   const [upload, setUpload] = useState();
   const [tarns, setTarns] = useState();
 
-  console.log(upload);
-
   const [sourceLanguges, setSourceLanguges] = useState("ko");
   const [targetLanguges, setTargetLanguges] = useState("en");
 
   const URL = process.env.REACT_APP_BASEURL;
-  console.log(URL);
 
   const sLSelect = (e) => {
     setSourceLanguges(e.target.value);
@@ -21,7 +18,6 @@ function App() {
   const tLSelect = (e) => {
     setTargetLanguges(e.target.value);
   };
-  console.log(targetLanguges);
 
   const translate = async () => {
     try {
@@ -37,6 +33,12 @@ function App() {
     } catch (error) {
       console.log(error);
     }
+
+    let vl = document.getElementById("SInput").value.trim();
+    if (vl === "") {
+      document.getElementById("TInput").value = "";
+      document.getElementById("SInput").value = "";
+    }
   };
 
   return (
@@ -45,22 +47,28 @@ function App() {
         <Con>
           <Selc>
             <Select
-              name="sourceLanguges"
-              id=""
+              id="sourceLanguges"
               onChange={sLSelect}
               value={sourceLanguges}
             >
-              <option value="ko">한국어</option>
-              <option value="en">영어</option>
-              <option value="es">스페인어</option>
-              <option value="ja">일본어</option>
+              <option name="sourceLanguges" value="ko">
+                한국어
+              </option>
+              <option name="sourceLanguges" value="en">
+                영어
+              </option>
+              <option name="sourceLanguges" value="es">
+                스페인어
+              </option>
+              <option name="sourceLanguges" value="ja">
+                일본어
+              </option>
             </Select>
 
             <But onClick={translate}>»</But>
 
             <Select
-              name="targetLanguges"
-              id=""
+              id="targetLanguges"
               onChange={tLSelect}
               value={targetLanguges}
             >
@@ -74,11 +82,12 @@ function App() {
             value={upload}
             onChange={(e) => setUpload(e.target.value)}
             placeholder="번역할 거"
+            id="SInput"
           />
         </Con>
 
         <Con>
-          <Input className="tarInput" placeholder="번역된 거" value={tarns} />
+          <Input id="TInput" placeholder="번역된 거" value={tarns} />
         </Con>
       </Content>
     </Body>
